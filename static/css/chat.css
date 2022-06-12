@@ -24,6 +24,8 @@ body {
     opacity: 95%;
     border-bottom: 1px solid grey;
     font-size: 1em;
+    position: fixed;
+    width: 100%;
 }
 
 .pfp {
@@ -130,12 +132,14 @@ input[type=text] {
 .chatbox {
     box-sizing: border-box;
     width: 100%;
-    height: 100%;
-    max-height: 100%;
     scroll-behavior: smooth;
     display: flex;
     flex-direction: column;
     padding: 0.5rem 1.5rem;
+    margin-top: 105px;
+    /* border: 10px solid red; */
+    max-height: 105%;
+    overflow: auto;
 }
 
 .chatbox p {
@@ -147,7 +151,8 @@ input[type=text] {
     word-wrap: break-word;
     margin-bottom: 2px;
     margin-top: 0px;
-    animation: enter 0.7s forwards;
+    animation: enter 0.4s forwards;
+    z-index: -1;
 }
 
 .chatbox .timestamp {

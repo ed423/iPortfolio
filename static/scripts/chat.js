@@ -19,8 +19,8 @@ function getTime() {
 // initialize the program
 function init() {
     let time = getTime();
-    let firstMessage = "poo!"
-    document.getElementById("starting-message").innerText = "ASdfsdfasD";
+    let firstMessage = "Hey there, glad you’re here. Welcome to my interactive portfolio chatbot. Please enter one of the commands below to learn more about me! \n \n “Tell me about yourself” \n “Tell me about your projects” \n “Show me your resume” \n  “What are your hobbies?” \n “What are your goals for the future?” \n “Tell me a joke” \n "
+    document.getElementById("starting-message").innerText = firstMessage;
     document.getElementById("timestamp").innerText = time;
 }
 
@@ -31,6 +31,8 @@ function getResponse(message) {
     let autoHtml = '<p class="bot-text">' + response + '</p>';
 
     $("#chatbox").append(autoHtml);
+    var elem = document.getElementById("chatbox");
+    elem.scrollTop = elem.scrollHeight;
 }
 
 function getUserInput() {
@@ -47,6 +49,10 @@ function getUserInput() {
     setTimeout(() => {
         getResponse(userInput);
     }, 2000);
+
+    // scroll to bottom of chatbox every time a new message is added
+    var elem = document.getElementById("chatbox");
+    elem.scrollTop = elem.scrollHeight;
 }
 
 function send() {
