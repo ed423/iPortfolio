@@ -19,7 +19,7 @@ function getTime() {
 // initialize the program
 function init() {
     let time = getTime();
-    let firstMessage = "Hey there, glad you’re here. Welcome to my interactive portfolio chatbot. Please enter one of the commands below to learn more about me! \n \n “Tell me about yourself” \n “Tell me about your projects” \n “Show me your resume” \n  “What are your hobbies?” \n “What are your goals for the future?” \n “Tell me a joke” \n "
+    let firstMessage = "Hey there, glad you’re here. Welcome to my interactive portfolio chatbot. The following are commands that you can use to learn more about me! \n \n “Tell me about yourself” \n “Tell me about your projects” \n  “What are your hobbies?” \n “What are your goals for the future?” \n “Tell me a joke” \n "
     document.getElementById("starting-message").innerText = firstMessage;
     document.getElementById("timestamp").innerText = time;
 }
@@ -31,6 +31,8 @@ function getResponse(message) {
     let autoHtml = '<p class="bot-text">' + response + '</p>';
 
     $("#chatbox").append(autoHtml);
+
+    // auto scroll to bottom of div when new message is added to the chatbox
     var elem = document.getElementById("chatbox");
     elem.scrollTop = elem.scrollHeight;
 }
@@ -48,9 +50,9 @@ function getUserInput() {
 
     setTimeout(() => {
         getResponse(userInput);
-    }, 2000);
+    }, 500);
 
-    // scroll to bottom of chatbox every time a new message is added
+    // auto scroll to bottom of div when new message is added to the chatbox
     var elem = document.getElementById("chatbox");
     elem.scrollTop = elem.scrollHeight;
 }
@@ -63,4 +65,9 @@ $("#text-input").keypress(function(key) {
     if (key.which == 13) {
         getUserInput();
     }
-})
+});
+
+let button = document.getElementById("send-button");
+button.addEventListener('click', event => {
+    getUserInput();
+});
